@@ -1,4 +1,5 @@
-const allowedCors = ['http://localhost:3006'];
+const allowedCors = ['http://memesto.nomoredomains.club/',
+  'https://memesto.nomoredomains.club/'];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
