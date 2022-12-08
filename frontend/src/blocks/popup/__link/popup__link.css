@@ -1,0 +1,9 @@
+.popup__link {
+  color: #fff;
+  text-decoration: none;
+  max-width: 100%;
+}
+
+.popup__link:hover {
+  opacity: 0.85;
+}

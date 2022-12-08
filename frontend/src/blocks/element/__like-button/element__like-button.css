@@ -1,0 +1,15 @@
+.element__like-button {
+  width: 23px;
+  height: 19px;
+  border: none;
+  padding: 0 0 0 10px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../../images/white-heart.svg");
+  cursor: pointer;
+}
+
+.element__like-button:hover {
+  opacity: 0.5;
+}

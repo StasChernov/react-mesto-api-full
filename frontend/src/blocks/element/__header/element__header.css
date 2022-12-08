@@ -1,0 +1,7 @@
+.element__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 21px;
+  margin-right: 21px;
+}

@@ -1,0 +1,10 @@
+.popup__input_type_auth {
+  background-color: #000;
+  border: none;
+  color: #ccc;
+  border-bottom: #ccc 2px solid;
+}
+
+.popup__input_type_auth::placeholder {
+  color: #ccc;
+}
