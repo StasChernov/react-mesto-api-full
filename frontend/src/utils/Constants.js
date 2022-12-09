@@ -21,9 +21,9 @@ export const validationOptions = {
 
 export const formValidators = {};
 
-export const apiURL = "http://localhost:3000";
+export const apiURL = "https://api.memesto.nomoredomains.club";
 
-export const baseAuthURL = "http://localhost:3000";
+export const baseAuthURL = "https://api.memesto.nomoredomains.club";
 
 export const headers = {
   "Content-Type": "application/json",
