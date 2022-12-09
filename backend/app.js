@@ -19,7 +19,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://mesto36.nomoredomains.xyz',
+    origin: 'https://memesto.nomoredomains.club',
     credentials: true,
   }),
 );
