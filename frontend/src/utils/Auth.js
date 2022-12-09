@@ -6,24 +6,9 @@ class Auth {
     this._headers = headers;
   }
 
-  checkToken(token) {
-    if (!token) return Promise.reject(`Ошибка: Отсутствует токен`);
-    console.log(token);
-    return fetch(`${this._authURL}/users/me`, {
-      method: "GET",
-      headers: {
-        ...this._headers,
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
-    this._handleResponse(res, "checkToken")});
-  }
-
   _handleResponse(res, type) {
     if (res.ok) {
-      const temp = res.json();
-      console.log(temp);
-      return temp;
+      return res.json();
     } else {
       let message = "";
 
@@ -32,11 +17,9 @@ class Auth {
           if (type === "signIn") message = "Не передано одно из полей.";
           else if (type === "signUp")
             message = "Некорректно заполнено одно из полей.";
-          else message = "Токен не передан или передан не в том формате.";
           break;
         case 401:
           if (type === "signIn") message = "Пользователь с email не найден.";
-          else message = "Переданный токен некорректен.";
           break;
         default:
           message = "Повторите попытку позже.";
@@ -55,6 +38,19 @@ class Auth {
         email,
       }),
     }).then((res) => this._handleResponse(res, "signIn"));
+  }
+
+  checkToken(token) {
+    if (!token) return Promise.reject(`Ошибка: Отсутствует токен`);
+    return fetch(`${this._authURL}/users/me`, {
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${token}`,
+      },
+      method: "GET",
+    }).then((res) => {
+      console.log(res);
+      return res.json()});
   }
 
   signUp({ email, password }) {

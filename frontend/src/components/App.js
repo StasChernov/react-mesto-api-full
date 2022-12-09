@@ -16,8 +16,8 @@ function App(props) {
 
   const [currentUser, setCurrentUser] = useState({
     loggedIn: false,
-    email: false,
-    id: false,
+    email: '',
+    id: '',
   });
 
   const [tooltip, setTooltip] = useState({
@@ -66,12 +66,11 @@ function App(props) {
     auth
       .checkToken(token)
       .then((data) => {
-        console.log(data);
         setCurrentUser({
-          loggedIn: true,
-          email: data.email,
-          id: data._id,
-        });
+         loggedIn: true,
+         email: data.email,
+         id: data._id,
+        })
       })
       .catch((err) => {
         if (err.name === "AbortError") {
@@ -82,7 +81,6 @@ function App(props) {
       })
       .finally(() => {
         setIsChecked(true);
-        console.log(currentUser.loggedIn);
       });
   }, []);
 
