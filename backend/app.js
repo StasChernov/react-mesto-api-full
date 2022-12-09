@@ -13,6 +13,12 @@ require('dotenv').config();
 const { PORT = 3000 } = process.env;
 const app = express();
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+console.log(NODE_ENV);
+console.log(JWT_SECRET);
+console.log(NODE_ENV === 'production');
+console.log(NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret');
+
 app.use(cors(
   {
     origin: '*',
