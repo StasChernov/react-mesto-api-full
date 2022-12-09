@@ -65,7 +65,8 @@ function App(props) {
 
     auth
       .checkToken(token)
-      .then(({ data }) => {
+      .then((data) => {
+        console.log(data);
         setCurrentUser({
           loggedIn: true,
           email: data.email,
@@ -81,6 +82,7 @@ function App(props) {
       })
       .finally(() => {
         setIsChecked(true);
+        console.log(currentUser.loggedIn);
       });
   }, []);
 

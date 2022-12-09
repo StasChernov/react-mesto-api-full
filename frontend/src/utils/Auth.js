@@ -6,9 +6,24 @@ class Auth {
     this._headers = headers;
   }
 
+  checkToken(token) {
+    if (!token) return Promise.reject(`Ошибка: Отсутствует токен`);
+    console.log(token);
+    return fetch(`${this._authURL}/users/me`, {
+      method: "GET",
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+    this._handleResponse(res, "checkToken")});
+  }
+
   _handleResponse(res, type) {
     if (res.ok) {
-      return res.json();
+      const temp = res.json();
+      console.log(temp);
+      return temp;
     } else {
       let message = "";
 
@@ -51,18 +66,6 @@ class Auth {
         password,
       }),
     }).then((res) => this._handleResponse(res, "signUp"));
-  }
-
-  checkToken(token) {
-    if (!token) return Promise.reject(`Ошибка: Отсутствует токен`);
-
-    return fetch(`${this._authURL}/users/me`, {
-      method: "GET",
-      headers: {
-        ...this._headers,
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => this._handleResponse(res, "checkToken"));
   }
 }
 
